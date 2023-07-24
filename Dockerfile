@@ -1,10 +1,11 @@
-FROM alpine:3.11
+FROM alpine:3
 
 ENV PYTHONUNBUFFERED=1
 
 RUN apk add --no-cache python3 git
-RUN python -m ensurepip && \
-    pip install --upgrade pip setuptools && \
+RUN ln -sf python3 /usr/bin/python
+RUN python3 -m ensurepip && \
+    pip3 install --upgrade pip setuptools && \
     rm -r /root/.cache
 
 RUN git clone https://github.com/eddie3/gogrepo
